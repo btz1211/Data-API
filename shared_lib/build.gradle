@@ -1,1 +1,30 @@
-apply plugin 'java';
+apply plugin: 'maven'
+
+dependencies{
+  compile 'com.attivio.clientapi:commons-pool-1.3-aie:3.5.1'
+  compile 'com.attivio.clientapi:commons-dbcp-1.2.2:3.5.1'
+  compile 'com.intellij.community:commons-logging-1.1.3:14.0.3'
+  compile 'com.github.fge:json-schema-validator:2.2.6'
+  compile 'org.mongodb:mongo-java-driver:2.10.1'
+  
+  releaseJars 'com.attivio.clientapi:commons-pool-1.3-aie:3.5.1'
+  releaseJars 'com.attivio.clientapi:commons-dbcp-1.2.2:3.5.1'
+  releaseJars 'com.intellij.community:commons-logging-1.1.3:14.0.3'
+  releaseJars 'com.github.fge:json-schema-validator:2.2.6'
+  releaseJars 'org.mongodb:mongo-java-driver:2.10.1'
+}
+
+jar{
+	into("/lib"){
+		from configurations.releaseJars;
+	}
+}
+
+install{
+	repositories.mavenInstaller{
+		pom.artifactId = 'shared_lib';
+		pom.groupId = 'com.gs.gsam.dataAPI';
+		pom.version = "$modversion"
+	
+	}
+}
