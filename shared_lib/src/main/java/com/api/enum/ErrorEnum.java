@@ -1,4 +1,4 @@
-package gs.dataApi.enums;
+package com.api.enums;
 
 public enum ErrorEnum {
 	NO_CONTENT(204),
