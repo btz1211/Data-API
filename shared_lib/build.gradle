@@ -23,7 +23,7 @@ jar{
 install{
 	repositories.mavenInstaller{
 		pom.artifactId = 'shared_lib';
-		pom.groupId = 'com.gs.gsam.dataAPI';
+		pom.groupId = 'com.data.api';
 		pom.version = "$modversion"
 	
 	}
