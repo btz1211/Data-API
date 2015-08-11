@@ -1,4 +1,4 @@
-package gs.dataApi.exceptions;
+package com.api.exceptions;
 
 public class ApplicationSetupException extends Exception{
 	private static final long serialVersionUID = 1L;
