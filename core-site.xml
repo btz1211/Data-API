@@ -1,0 +1,42 @@
+<configuration>
+  <property>
+    <final>false</final>
+    <name>fs.defaultFS</name>
+    <value>hdfs://d179663</value>
+    <description>GS (Rob) - This should reference the logical cluster name (for HA).</description>
+  </property>
+  <property>
+    <final>true</final>
+    <name>hadoop.http.authentication.type</name>
+    <value>kerberos</value>
+    <description>EB Defines authentication used for Oozie HTTP endpoint. Supported values are: simple / kerberos / #AUTHENTICATION_HANDLER_CLASSNAME#</description>
+  </property>
+  <property>
+    <final>true</final>
+    <name>hadoop.rpc.protection</name>
+    <value>authentication</value>
+    <description>EB This field sets the quality of protection for secured sasl connections. Possible values are authentication, integrity and privacy. authentication means authentication only and no integrity or privacy; integrity implies authentication and integrity are enabled; and privacy implies all of authentication, integrity and privacy are enabled."</description>
+  </property>
+  <property>
+    <final>true</final>
+    <name>hadoop.security.authentication</name>
+    <value>kerberos</value>
+    <description>EB Possible values are simple (no authentication), and kerberos</description>
+  </property>
+  <property>
+    <final>true</final>
+    <name>hadoop.security.authorization</name>
+    <value>true</value>
+    <description>EB Is service-level authorization enabled?</description>
+  </property>
+  <property>
+    <name>hadoop.tmp.dir</name>
+    <value>/tmp/hadoop-${user.name}</value>
+    <description>value for the client</description>
+  </property>
+  <property>
+    <name>io.file.buffer.size</name>
+    <value>65536</value>
+    <description>GS (Rob) - Increasing per best practices.</description>
+  </property>
+</configuration>
