@@ -1,0 +1,56 @@
+<configuration>
+  <property>
+    <final>false</final>
+    <name>dfs.client.failover.proxy.provider.d179663</name>
+    <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+    <description>GS (Rob) - Required for HA namenode.</description>
+  </property>
+  <property>
+    <final>false</final>
+    <name>dfs.ha.namenodes.d179663</name>
+    <value>nn1,nn2</value>
+    <description>GS (Rob) - Required for HA namenode.</description>
+  </property>
+  <property>
+    <final>false</final>
+    <name>dfs.namenode.http-address.d179663.nn1</name>
+    <value>d179663-001.dc.gs.com:50070</value>
+    <description>GS (Rob) - Required for HA namenode.</description>
+  </property>
+  <property>
+    <final>false</final>
+    <name>dfs.namenode.http-address.d179663.nn2</name>
+    <value>d179663-002.dc.gs.com:50070</value>
+    <description>GS (Rob) - Required for HA namenode.</description>
+  </property>
+  <property>
+    <final>true</final>
+    <name>dfs.namenode.kerberos.principal</name>
+    <value>dchdfs/_HOST@GS.COM</value>
+    <description>EB - NN1 Principal (not following the naming standards)</description>
+  </property>
+  <property>
+    <final>false</final>
+    <name>dfs.namenode.rpc-address.d179663.nn1</name>
+    <value>d179663-001.dc.gs.com:8020</value>
+    <description>GS (Rob) - Required for HA namenode.</description>
+  </property>
+  <property>
+    <final>false</final>
+    <name>dfs.namenode.rpc-address.d179663.nn2</name>
+    <value>d179663-002.dc.gs.com:8020</value>
+    <description>GS (Rob) - Required for HA namenode.</description>
+  </property>
+  <property>
+    <final>false</final>
+    <name>dfs.nameservice.id</name>
+    <value>d179663</value>
+    <description>GS (Rob) - Logical name of HA namenode.</description>
+  </property>
+  <property>
+    <final>false</final>
+    <name>dfs.nameservices</name>
+    <value>d179663</value>
+    <description>GS (Rob) - Logical name of HA namenode.</description>
+  </property>
+</configuration>
