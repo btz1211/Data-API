@@ -1,0 +1,24 @@
+	private static final String DRIVER = org.h2.Driver.class.getName();
+	private static final String URL = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1";
+	private static final String USER = "sa";
+	private static final String PASSWORD = "";
+	private static final String DB_SCHEMA_SCRIPT_PATH = "src/test/resources/db/db-create.sql";
+	private static final String TEST_DATA_SCRIPT_PATH = "src/test/resources/db/dataset.xml";
+
+	@Rule
+	public StreamTestExecutor streamTestExecutor = forStream(JPMCapitalFlowStream.class);
+
+	@BeforeClass
+	public static void setup(){
+		//init hsqldb
+		try {
+			RunScript.execute(URL, USER, PASSWORD, DB_SCHEMA_SCRIPT_PATH, StandardCharsets.UTF_8, false);
+			IDataSet dataSet = getDataSet(TEST_DATA_SCRIPT_PATH);
+			IDatabaseTester databaseTester = new JdbcDatabaseTester(DRIVER, URL, USER, PASSWORD);
+			databaseTester.setSetUpOperation(DatabaseOperation.CLEAN_INSERT);
+			databaseTester.setDataSet(dataSet);
+			databaseTester.onSetup();
+		}catch(Exception e){
+			Assert.fail("Failed to initiate mock DB, due to::" + e.getLocalizedMessage());
+		}
+	}
