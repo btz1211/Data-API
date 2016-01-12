@@ -1,0 +1,11 @@
+Func getAnagram(startWord, startWordCount, wordList, targetWord){
+	If(wordCheck(startWord, startWordCount, targetWord) >= 0){
+		//return
+	}else{
+		For(word: wordlist){
+			newWord = startWord + word;
+			newWordCount = getWordCount(newWord);
+			getAnagram(newWord, newWordCount, wordlist, targetWord);
+		}
+	}
+}
