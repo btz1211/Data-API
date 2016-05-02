@@ -1,1 +1,38 @@
-apply plugin 'java';
+apply plugin: 'cbk'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+def mainClass = 'com.demo.vertx.Server'
+
+compileJava{
+	sourceCompatibility = '1.8'
+	targetCompatibility = '1.8'
+}
+
+repositories {
+  mavenCentral();
+  maven { url 'http://gscentral.area.services.gs.com/maven/' }
+}
+
+configurations{
+	releaseJars
+}	
+
+dependencies {
+	 compile "io.vertx:vertx-core:3.2.1"
+}
+
+task createBatFile() <<{
+	def bat = new File("$rootDir/run.bat");
+	bat.text = "vertx run $mainClass -cp " + jar.archiveName +" -conf conf.json";
+}
+jar.dependsOn(createBatFile);
+
+task zipProject(type: Zip, dependsOn: createBatFile, description: "zip all the jar and configuration for deployment"){
+	from "$rootDir/cbkbuild/libs"
+	from ("$rootDir"){
+		include 'conf.json'
+		include 'run.bat'
+	}
+}
+assemble.finalizedBy zipProject;
